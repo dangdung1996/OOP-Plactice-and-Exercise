@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<style>
+    .iphone {background: cadetblue;padding: 20px;border: 7px groove brown;}
+    .nokia {
+        width: 50%;
+        margin: auto;
+    }
+    .iphone {
+        width: 50%;
+        margin: auto;
+    }
+    .nokia
+    {
+        background: #009688;
+        padding: 20px;
+        border: 7px groove #FFC107;
+    }
+
+    p {
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-family: cursive;
+    }
+    button {
+        padding: 10px;
+        padding-left: 21px;
+        border-radius: 63%;
+        border: 1px solid;
+        padding-right: 21px;
+        font-size: 17px;
+    }
+
+    input {
+        padding: 9px;
+    }
+</style>
+<body>
+
+<script>
+    function Mobile(inbox,draft,send) {
+        this.battery = 100;
+        this.inbox = inbox;
+        this.draft = draft;
+        this.isOn = true;
+        this.send = send;
+        this.getBattery = function () {
+            return this.battery;
+        };
+        this.turnOn = function () {
+            this.isOn = true;
+            // console.log("da bat")
+        }
+        this.turnOff = function () {
+            this.isOn = false;
+            // console.log("da tat")
+        }
+        this.checkOn = function () {
+            if (this.isOn === true){
+                console.log("dang bat")
+            }
+            else {
+                console.log("da tat")
+            }
+        };
+        this.charge = function () {
+            if(this.battery < 100){
+                this.battery ++;
+                console.log(this.battery)
+            }
+            else {
+                alert("da sac day")
+            }
+        };
+        this.writeMess = function (draft) {
+            draft = document.getElementById("iphone1").value;
+            if (this.isOn && this.battery > 0){
+                this.draft = draft;
+                this.battery --;
+            }
+            else {
+                console.log("không sử dụng được")
+            }
+        };
+
+        this.writeMess2 = function (draft) {
+            draft = document.getElementById("iphone2").value;
+            if (this.isOn && this.battery > 0){
+                this.draft = draft;
+                this.battery --;
+            }
+            else {
+                console.log("không sử dụng được")
+            }
+        };
+
+        this.sendMess = function ( phone , draft ) {
+
+            if (this.isOn && this.battery > 0) {
+                phone.inbox.push(draft);
+                this.send.push(draft);
+                this.draft = "";
+                this.battery--;
+                document.getElementById("nokiaMess").innerText = draft;
+            } else {
+                console.log("không gửi được")
+            }
+        }
+        this.sendMess2 = function ( phone , draft ) {
+
+            if (this.isOn && this.battery > 0) {
+                phone.inbox.push(draft);
+                this.send.push(draft);
+                this.draft = "";
+                this.battery--;
+                document.getElementById("iphoneMess").innerText = draft;
+            } else {
+                console.log("không gửi được")
+            }
+        }
+        this.checkInbox = function () {
+            this.inbox = inbox;
+            document.getElementById("iphoneMess2").innerText = this.inbox;
+        }
+        this.checkInbox2 = function () {
+            this.inbox = inbox;
+            document.getElementById("nokiaMess2").innerText = this.inbox;
+        }
+        this.checkSend2 = function () {
+            this.send =send;
+            document.getElementById("iphoneMess3").innerText = this.send;
+        }
+        this.checkSend = function () {
+
+            document.getElementById("nokiaMess3").innerText = this.send;
+        }
+
+    };
+
+    let iphone = new Mobile([],"",[]);
+    let nokia = new Mobile([],"",[]);
+</script>
+<div class="iphone"  >
+    <p>Iphone</p>
+    <p>
+        <input id="iphone1" type="text"></p>
+    <p>
+        <button onclick= "iphone.charge()">Sạc</button>
+        <button onclick= "iphone.writeMess()">Soạn tin</button>
+        <button onclick="iphone.sendMess(nokia , iphone.draft)" >Gửi</button>
+        <span id="iphoneMess"> </span>
+        <button onclick="iphone.checkInbox()" >Hộp thư đến</button>
+        <span id="iphoneMess2"></span>
+        <button onclick="iphone.checkSend2()" >Đã gửi</button>
+        <span id="iphoneMess3"></span></p>
+</div>
+<div class="nokia"  >
+    <p>Nokia
+    <p>
+        <input id="iphone2" type="text"></p>
+    <p>
+        <button onclick= "nokia.charge()">Sạc</button>
+        <button onclick= "nokia.writeMess2()">Soạn tin</button>
+        <button onclick="nokia.sendMess2(iphone, nokia.draft)" >Gửi</button>
+        <span id="nokiaMess"></span>
+        <button onclick="nokia.checkInbox2()" >Hộp thư đến</button>
+        <span id="nokiaMess2"></span>
+        <button onclick="nokia.checkSend()" >Đã gửi</button>
+        <span id="nokiaMess3"></span></p>
+</div>
+</body>
+</html>

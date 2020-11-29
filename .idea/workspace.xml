@@ -31,6 +31,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -56,6 +57,7 @@
       <workItem from="1606445012395" duration="3530000" />
       <workItem from="1606544175005" duration="119000" />
       <workItem from="1606563171456" duration="556000" />
+      <workItem from="1606631956257" duration="476000" />
     </task>
     <servers />
   </component>
